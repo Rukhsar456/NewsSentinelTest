@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+{% block body %}
+
+<style>
+    a {
+        color: #2196f3;
+        font-weight: 600;
+        text-decoration: none;
+        cursor: pointer;
+    }
+    a:hover{
+        color: #2196f3;
+        text-decoration: underline;
+    }
+</style>
+<script>
+    Swal.fire({
+        icon: '{{ status }}',
+        title: 'Result',
+        text: 'Entered news is {{ res }}',
+        footer: '<a href="/">Check another news</a>'
+    }).then(function () {
+        history.go(-1);
+    });
+</script>
+
+
+<br><br><br><br><br><br><br><br><br><br>
+{% endblock %}

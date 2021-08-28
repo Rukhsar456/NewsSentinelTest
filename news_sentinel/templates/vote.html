@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+{% block body %}
+
+    <style>
+        .btn {
+            padding: 25px 30px !important;
+        }
+
+        input {
+            width: 10%;
+        }
+    </style>
+
+    <div class="container">
+        <br>
+        <h1>
+            Are you sure you want this news to label as {{ label }} ?
+        </h1>
+        <h6 class="text-muted">You can not undo this action. This action will be permanent.</h6>
+
+        <form action="/castVote" method="post">
+            <input type="hidden" value="{{ news_id }}" name="news_id">
+            <input type="hidden" value="{{ vote }}" name="vote">
+            <input type="hidden" value="{{ current_user.id }}" name="user_id">
+            <br>
+            <input type="submit" name="submit" value="Yes" class="btn" style="background: green;">
+            <a class="btn" href="/">No, go back</a>
+        </form>
+        <br><br>
+    </div>
+{% endblock %}

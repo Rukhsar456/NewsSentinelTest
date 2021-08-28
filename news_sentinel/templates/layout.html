@@ -1,0 +1,189 @@
+<!doctype html>
+<html class="no-js" lang="zxx">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>News Sentinel</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" type="image/x-icon" href="/static/img/logo/logo.png">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+          crossorigin="anonymous">
+    <link rel="stylesheet" href="static/css/bootstrap.css"/>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+            integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+          integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+          crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script>
+        $(document).ready(function () {
+            $('.swal2-select').hide();
+        });
+    </script>
+</head>
+<body>
+<header>
+    <div class="header-area">
+        <div class="main-header ">
+            <div class="header-top ">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-xl-12">
+                            <div class="d-flex justify-content-lg-between align-items-center justify-content-sm-end">
+                                <div class="header-info-mid">
+
+                                    <div class="logo">
+                                        <a href="/"><img src="/static/img/logo/better.png" alt=""></a>
+                                    </div>
+                                </div>
+                                <div class="header-info-right d-flex align-items-center" style="margin-left: auto;">
+                                    {% if current_user.is_authenticated %}
+                                        <ul>
+                                            <li><a href="/logout" class="header-btn">Logout ({{ current_user.username }})</a></li>
+                                        </ul>
+                                    {% else %}
+                                        <ul>
+                                            <li><a href="/login" class="header-btn">Login</a></li>
+                                        </ul>
+                                        <ul>
+                                            <li><a href="/signup" class="header-btn">Signup</a></li>
+                                        </ul>
+                                    {% endif %}
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="header-bottom  header-sticky">
+                <div class="container-fluid">
+                    <div class="row align-items-center">
+                        <div class="col-xl-12">
+                            <div class="bottom-wrap d-flex justify-content-between align-items-center">
+
+                                <div class="logo2">
+                                    <a href="/"><img style="max-width: 300px;" src="/static/img/logo/better.png" alt=""></a>
+                                </div>
+
+                                <div class="main-menu d-none d-lg-block">
+                                    <nav>
+                                        <ul id="navigation">
+                                            <li><a href="/">Home</a></li>
+                                            <li><a href="/">News</a></li>
+                                            <li><a href="/contact">Contact</a></li>
+                                        </ul>
+                                    </nav>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="col-xl-12">
+                            <div class="mobile_menu d-block d-lg-none"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<main>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div class="container mt-20 mb-20">
+                    <div class="alert alert-{{ category }}" role="alert">
+                        {{ message }}
+                    </div>
+                </div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+
+    {% block body %}
+    {% endblock %}
+
+
+</main>
+<footer>
+    <div class="footer-wrapper">
+        <div class="footer-area footer-padding">
+            <div class="container">
+                <div class="row d-flex justify-content-between">
+                        <div class="single-footer-caption">
+                            <div class="footer-tittle">
+                                <h4>News Sentinel ~ Capstone Project</h4>
+                            </div>
+                        </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<div id="back-top" class="">
+    <a title="Go to Top" href="#" class=""> <i class="ti-angle-double-up scroll-animate"></i></a>
+</div>
+
+
+<script src="/static/js/vendor/modernizr-3.5.0.min.js"></script>
+<script src="/static/js/vendor/jquery-1.12.4.min.js"></script>
+<script src="/static/js/popper.min.js"></script>
+<script>eval(mod_pagespeed_RnRpwbZpkV);</script>
+<script>eval(mod_pagespeed_Zghj_zJnMg);</script>
+
+<script src="/static/js/owl.carousel.min.js"></script>
+<script>eval(mod_pagespeed_0jikwTNmbe);</script>
+<script>eval(mod_pagespeed_DkFl2xMO1D);</script>
+<script src="/static/js/jquery.slicknav.min.js"></script>
+<script>eval(mod_pagespeed_ZykcH6zFm4);</script>
+
+<script>eval(mod_pagespeed_0xQ6ZBkxDn);</script>
+<script>eval(mod_pagespeed_BRjIrKhHJb);</script>
+<script>eval(mod_pagespeed_1x$n3FVE6B);</script>
+
+<script>eval(mod_pagespeed_JeJ57dkc4e);</script>
+<script>eval(mod_pagespeed_XNs4GYBwM8);</script>
+<script src="/static/js/jquery.validate.min.js"></script>
+<script>eval(mod_pagespeed_jTyIKFGN6Q);</script>
+<script>eval(mod_pagespeed_n4OY_yRv3E);</script>
+<script>eval(mod_pagespeed_5FXY4MxB26);</script>
+
+<script>eval(mod_pagespeed_6xsGq8BPed);</script>
+<script>eval(mod_pagespeed_3TudPy7eVv);</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'UA-23581568-13');
+</script>
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js"
+        data-cf-beacon='{"rayId":"666cfae058d1103f","token":"cd0b4b3a733644fc843ef0b185f98241",
+        "version":"2021.6.0","si":10}'></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+{#custom JS#}
+<script>
+
+</script>
+
+</body>
+
+</html>

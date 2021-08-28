@@ -1,0 +1,74 @@
+{% extends "layout.html" %}
+{% block body %}
+
+    <div class="page-notification">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="index-2.html">Home</a></li>
+                            <li class="breadcrumb-item"><a href="#">SignUp</a></li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="register-form-area mt-10 mb-40">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-xl-6 col-lg-7 col-md-10">
+                    <div class="register-form text-center">
+                        <form action="" method="post">
+                            <div class="register-heading">
+                                <span>Change Password</span>
+                                <p>Enter new passwords</p>
+                            </div>
+
+                            <div class="input-box">
+
+                                {{ form.hidden_tag() }}
+
+                                <div class="single-input-fields">
+                                    {{ form.password.label() }}
+                                    {% if form.password.errors %}
+                                        {{ form.password(placeholder="Enter password" , class="form-control is-invalid") }}
+                                        <div class="invalid-feedback">
+                                            {% for error in form.password.errors %}
+                                                <span>{{ error }}</span>
+                                            {% endfor %}
+                                        </div>
+                                    {% else %}
+                                        {{ form.password(placeholder="Enter password") }}
+                                    {% endif %}
+                                </div>
+                                <div class="single-input-fields">
+                                    {{ form.confirm_password.label() }}
+                                    {% if form.confirm_password.errors %}
+                                        {{ form.confirm_password(placeholder="Confirm password" , class="form-control is-invalid") }}
+                                        <div class="invalid-feedback">
+                                            {% for error in form.confirm_password.errors %}
+                                                <span>{{ error }}</span>
+                                            {% endfor %}
+                                        </div>
+                                    {% else %}
+                                        {{ form.confirm_password(placeholder="Confirm password") }}
+                                    {% endif %}
+                                </div>
+                            </div>
+
+                            <div class="register-footer">
+                                {{ form.submit(class="btn") }}
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

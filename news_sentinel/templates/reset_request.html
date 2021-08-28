@@ -1,0 +1,58 @@
+{% extends "layout.html" %}
+{% block body %}
+
+    <div class="page-notification">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="/">Home</a></li>
+                            <li class="breadcrumb-item"><a href="#">login</a></li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="login-form-area mb-50 pt-10">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-xl-6 col-lg-7 col-md-10">
+                    <div class="login-form">
+                        <form action="" method="post">
+                            <div class="login-heading">
+                                <span>Request Password Reset</span>
+                                <p>Enter email address to initiate the process</p>
+                            </div>
+
+                            <div class="input-box">
+                                {{ form.hidden_tag() }}
+                                <div class="single-input-fields">
+                                    {{ form.email.label() }}
+                                    {% if form.email.errors %}
+                                        {{ form.email(placeholder="Enter email" , class="form-control is-invalid") }}
+                                        <div class="invalid-feedback">
+                                            {% for error in form.email.errors %}
+                                                <span>{{ error }}</span>
+                                            {% endfor %}
+                                        </div>
+                                    {% else %}
+                                        {{ form.email(placeholder="Enter email") }}
+                                    {% endif %}
+                                </div>
+
+                            </div>
+
+                            <div class="login-footer">
+                                {{ form.submit(class="btn") }}
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
